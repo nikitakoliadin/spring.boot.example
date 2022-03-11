@@ -1,7 +1,6 @@
 # TODO
 
 * Config
-* Controller
 * DTO
 * Exception
 * Filter
