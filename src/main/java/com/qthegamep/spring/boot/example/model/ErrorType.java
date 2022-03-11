@@ -2,6 +2,7 @@ package com.qthegamep.spring.boot.example.model;
 
 public enum ErrorType {
 
+    INTERNAL_ERROR(500),
     FAILURE_ERROR(501);
 
     private final int errorCode;

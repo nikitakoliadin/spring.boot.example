@@ -1,7 +1,6 @@
 # TODO
 
 * Config
-* DTO
 * Exception
 * Filter
 * Mapper
