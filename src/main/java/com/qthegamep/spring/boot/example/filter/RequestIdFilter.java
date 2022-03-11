@@ -15,31 +15,35 @@ import java.io.IOException;
 
 @Component
 @Order(10)
-public class RequestIdRequestFilter implements Filter {
+public class RequestIdFilter implements Filter {
 
-    private static final Logger LOG = LoggerFactory.getLogger(RequestIdRequestFilter.class);
+    private static final Logger LOG = LoggerFactory.getLogger(RequestIdFilter.class);
 
     private final GenerationService generationService;
 
     @Autowired
-    public RequestIdRequestFilter(GenerationService generationService) {
+    public RequestIdFilter(GenerationService generationService) {
         this.generationService = generationService;
     }
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+        String requestId = getRequestId(servletRequest);
+        LOG.debug("RequestId: {}", requestId);
+        servletRequest.setAttribute(Constants.REQUEST_ID_HEADER, requestId);
+        ((HttpServletResponse) servletResponse).addHeader(Constants.REQUEST_ID_HEADER, requestId);
+        filterChain.doFilter(servletRequest, servletResponse);
+    }
+
+    private String getRequestId(ServletRequest servletRequest) {
         String requestIdHeader = ((HttpServletRequest) servletRequest).getHeader(Constants.REQUEST_ID_HEADER);
         if (requestIdHeader == null || requestIdHeader.isEmpty()) {
             String xRequestIdHeader = ((HttpServletRequest) servletRequest).getHeader(Constants.X_REQUEST_ID_HEADER);
-            String requestId = xRequestIdHeader == null || xRequestIdHeader.isEmpty()
+            return xRequestIdHeader == null || xRequestIdHeader.isEmpty()
                     ? generationService.generateUniqueId(10L)
                     : xRequestIdHeader;
-            LOG.debug("RequestId: {}", requestId);
-            servletRequest.setAttribute(Constants.REQUEST_ID_HEADER, requestId);
-            ((HttpServletResponse) servletResponse).addHeader(Constants.REQUEST_ID_HEADER, requestId);
-            filterChain.doFilter(servletRequest, servletResponse);
         } else {
-            LOG.debug("RequestId header: {}", requestIdHeader);
+            return requestIdHeader;
         }
     }
 }
