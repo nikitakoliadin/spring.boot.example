@@ -2,11 +2,11 @@ package com.qthegamep.spring.boot.example.config;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.PreDestroy;
 
-@Component
+@Configuration
 public class ShutdownHookConfig {
 
     private static final Logger LOG = LoggerFactory.getLogger(ShutdownHookConfig.class);
