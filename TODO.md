@@ -1,8 +1,7 @@
 # TODO
 
-* Config
-* Filter
 * Server
+* Config
 * Log
 * Pom
 * Actuator

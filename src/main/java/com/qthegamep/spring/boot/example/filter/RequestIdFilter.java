@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Component
-@Order(10)
+@Order(20)
 public class RequestIdFilter implements Filter {
 
     private static final Logger LOG = LoggerFactory.getLogger(RequestIdFilter.class);

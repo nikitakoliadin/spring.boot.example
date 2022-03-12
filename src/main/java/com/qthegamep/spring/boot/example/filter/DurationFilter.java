@@ -10,10 +10,10 @@ import javax.servlet.*;
 import java.io.IOException;
 
 @Component
-@Order(20)
-public class DurationRequestFilter implements Filter {
+@Order(30)
+public class DurationFilter implements Filter {
 
-    private static final Logger LOG = LoggerFactory.getLogger(DurationRequestFilter.class);
+    private static final Logger LOG = LoggerFactory.getLogger(DurationFilter.class);
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
