@@ -1,0 +1,64 @@
+{
+  "properties": [
+    {
+      "name": "system.type",
+      "type": "java.lang.String",
+      "description": "Type of configs."
+    },
+    {
+      "name": "docker.image.name.file.path",
+      "type": "java.lang.String",
+      "description": "Path to docker image name file."
+    },
+    {
+      "name": "root.logger.level",
+      "type": "java.lang.String",
+      "description": "Level of the root logger."
+    },
+    {
+      "name": "root.logger.file.enable",
+      "type": "java.lang.Boolean",
+      "description": "Enable root logger file."
+    },
+    {
+      "name": "root.logger.file.name",
+      "type": "java.lang.String",
+      "description": "Name of the root logger file."
+    },
+    {
+      "name": "root.logger.file.path",
+      "type": "java.lang.String",
+      "description": "Path to root logger file."
+    },
+    {
+      "name": "root.logger.file.appender",
+      "type": "java.lang.Boolean",
+      "description": "Enable root logger file appender."
+    },
+    {
+      "name": "root.logger.file.name.pattern",
+      "type": "java.lang.String",
+      "description": "File name pattern of the root logger."
+    },
+    {
+      "name": "root.logger.file.max.file.size",
+      "type": "java.lang.String",
+      "description": "Maximum file size of the root logger file."
+    },
+    {
+      "name": "root.logger.file.max.history",
+      "type": "java.lang.Integer",
+      "description": "Maximum history of the root logger file."
+    },
+    {
+      "name": "root.logger.file.total.size.cap",
+      "type": "java.lang.String",
+      "description": "Total size cap of the root logger file."
+    },
+    {
+      "name": "root.logger.file.pattern",
+      "type": "java.lang.String",
+      "description": "Pattern of the root logger file."
+    }
+  ]
+}
