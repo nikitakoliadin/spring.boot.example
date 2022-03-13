@@ -1,6 +1,5 @@
 # TODO
 
-* Server
 * Config
 * Log
 * Pom
