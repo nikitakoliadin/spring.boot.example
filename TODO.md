@@ -1,6 +1,5 @@
 # TODO
 
-* Pom
 * Actuator
 * Admin
 * Whitelabel error
