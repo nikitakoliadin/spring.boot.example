@@ -11,9 +11,9 @@ import java.io.IOException;
 
 @Component
 @Order(30)
-public class DurationFilter implements Filter {
+public class DurationRequestFilter implements Filter {
 
-    private static final Logger LOG = LoggerFactory.getLogger(DurationFilter.class);
+    private static final Logger LOG = LoggerFactory.getLogger(DurationRequestFilter.class);
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {

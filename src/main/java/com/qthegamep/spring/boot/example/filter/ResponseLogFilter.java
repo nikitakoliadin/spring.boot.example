@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Component
@@ -22,8 +23,7 @@ public class ResponseLogFilter implements Filter {
         String path = ((HttpServletRequest) servletRequest).getRequestURL().toString();
         String requestId = (String) servletRequest.getAttribute(Constants.REQUEST_ID_HEADER);
         String clientIp = servletRequest.getRemoteAddr();
-        String startTime = (String) servletRequest.getAttribute(Constants.START_TIME_HEADER);
-        String duration = String.valueOf(System.currentTimeMillis() - Long.parseLong(startTime));
+        String duration = ((HttpServletResponse) servletResponse).getHeader(Constants.DURATION_HEADER);
         LOG.info("Request processed. Path: {} RequestId: {} Client IP: {} Duration: {}", path, requestId, clientIp, duration);
     }
 }
