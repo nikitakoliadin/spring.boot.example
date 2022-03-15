@@ -24,6 +24,10 @@ public class ResponseLogFilter implements Filter {
         String requestId = (String) servletRequest.getAttribute(Constants.REQUEST_ID_HEADER);
         String clientIp = servletRequest.getRemoteAddr();
         String duration = ((HttpServletResponse) servletResponse).getHeader(Constants.DURATION_HEADER);
+        if (duration == null) {
+            String startTime = (String) servletRequest.getAttribute(Constants.START_TIME_HEADER);
+            duration = String.valueOf(System.currentTimeMillis() - Long.parseLong(startTime));
+        }
         LOG.info("Request processed. Path: {} RequestId: {} Client IP: {} Duration: {}", path, requestId, clientIp, duration);
     }
 }
