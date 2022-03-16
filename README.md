@@ -4,7 +4,11 @@
 
 ### Start
 
-Run jar: `java -jar .\spring.boot.example-1.0.0.jar`
+Run jar: `java -jar .\[module_name]-[version].jar`
+
+## Modules
+
+* application
 
 ## Urls
 
