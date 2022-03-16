@@ -83,5 +83,11 @@
             <artifactId>spring-boot-admin-starter-server</artifactId>
             <version>${spring.spring-boot-admin-starter-server.version}</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
     </dependencies>
 </project>

@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "token.validity.seconds",
+      "type": "java.lang.Integer",
+      "description": "Token validity in seconds."
+    }
+  ]
+}
