@@ -1,7 +1,6 @@
 package com.qthegamep.admin.config;
 
 import de.codecentric.boot.admin.server.config.AdminServerProperties;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -21,7 +20,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private final Integer tokenValiditySeconds;
     private final AdminServerProperties adminServerProperties;
 
-    @Autowired
     public WebSecurityConfig(@Value("${token.validity.seconds}") Integer tokenValiditySeconds,
                              AdminServerProperties adminServerProperties) {
         this.tokenValiditySeconds = tokenValiditySeconds;

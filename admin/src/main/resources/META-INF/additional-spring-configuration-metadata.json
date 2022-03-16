@@ -4,6 +4,31 @@
       "name": "token.validity.seconds",
       "type": "java.lang.Integer",
       "description": "Token validity in seconds."
+    },
+    {
+      "name": "event.store.map.backup.count",
+      "type": "java.lang.Integer",
+      "description": "Event store map backup count."
+    },
+    {
+      "name": "event.store.map.merge.policy.config.batch.size",
+      "type": "java.lang.Integer",
+      "description": "Event store map merge policy config batch size."
+    },
+    {
+      "name": "sent.notifications.map.backup.count",
+      "type": "java.lang.Integer",
+      "description": "Sent notifications map backup count."
+    },
+    {
+      "name": "sent.notifications.map.merge.policy.config.batch.size",
+      "type": "java.lang.Integer",
+      "description": "Sent notifications map merge policy config batch size."
+    },
+    {
+      "name": "hazelcast.jmx.config",
+      "type": "java.lang.String",
+      "description": "Enable Hazelcast JMX config."
     }
   ]
 }
