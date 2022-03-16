@@ -8,7 +8,13 @@ Run jar: `java -jar .\[module_name]-[version].jar`
 
 ## Modules
 
-* application
+### admin
+
+[http://localhost:8082](http://localhost:8082)
+
+### application
+
+[http://localhost:8081](http://localhost:8081)
 
 ## Urls
 

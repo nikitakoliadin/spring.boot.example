@@ -21,6 +21,7 @@
     </parent>
 
     <modules>
+        <module>admin</module>
         <module>application</module>
     </modules>
 

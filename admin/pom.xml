@@ -4,12 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>application</artifactId>
+    <artifactId>admin</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <name>application</name>
-    <description>application</description>
+    <name>admin</name>
+    <description>admin</description>
 
     <parent>
         <groupId>com.qthegamep</groupId>
@@ -20,7 +20,7 @@
     <properties>
         <!-- Java -->
         <java.version>1.8</java.version>
-        <mainClass>com.qthegamep.application.Application</mainClass>
+        <mainClass>com.qthegamep.admin.Application</mainClass>
 
         <!-- JAR plugin -->
         <jar-plugin.addClasspath>true</jar-plugin.addClasspath>
@@ -32,7 +32,7 @@
         <dependency-plugin.overWriteIfNewer>true</dependency-plugin.overWriteIfNewer>
 
         <!-- Spring -->
-        <spring.spring-boot-admin-starter-client.version>2.6.2</spring.spring-boot-admin-starter-client.version>
+        <spring.spring-boot-admin-starter-server.version>2.6.2</spring.spring-boot-admin-starter-server.version>
     </properties>
 
     <build>
@@ -77,29 +77,11 @@
 
     <dependencies>
         <!-- Spring -->
-        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-configuration-processor -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-thymeleaf -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/de.codecentric/spring-boot-admin-starter-client -->
+        <!-- https://mvnrepository.com/artifact/de.codecentric/spring-boot-admin-starter-server -->
         <dependency>
             <groupId>de.codecentric</groupId>
-            <artifactId>spring-boot-admin-starter-client</artifactId>
-            <version>${spring.spring-boot-admin-starter-client.version}</version>
+            <artifactId>spring-boot-admin-starter-server</artifactId>
+            <version>${spring.spring-boot-admin-starter-server.version}</version>
         </dependency>
     </dependencies>
 </project>
