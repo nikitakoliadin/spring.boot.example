@@ -16,6 +16,10 @@ Run jar: `java -jar .\[module_name]-[version].jar`
 
 [http://localhost:8081](http://localhost:8081)
 
+### config
+
+[http://localhost:8083](http://localhost:8083)
+
 ## Urls
 
 ### Actuator Urls
@@ -40,6 +44,8 @@ Run jar: `java -jar .\[module_name]-[version].jar`
 * /actuator/metrics/{requiredMetricName}
 * /actuator/scheduledtasks
 * /actuator/mappings
+* /actuator/refresh
+* /actuator/features
 
 ### Service Urls
 

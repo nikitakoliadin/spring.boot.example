@@ -4,12 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>application</artifactId>
+    <artifactId>config</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <name>application</name>
-    <description>application</description>
+    <name>config</name>
+    <description>config</description>
 
     <parent>
         <groupId>com.qthegamep</groupId>
@@ -20,7 +20,7 @@
     <properties>
         <!-- Java -->
         <java.version>1.8</java.version>
-        <mainClass>com.qthegamep.application.Application</mainClass>
+        <mainClass>com.qthegamep.config.Application</mainClass>
 
         <!-- JAR plugin -->
         <jar-plugin.addClasspath>true</jar-plugin.addClasspath>
@@ -30,9 +30,6 @@
         <dependency-plugin.overWriteReleases>false</dependency-plugin.overWriteReleases>
         <dependency-plugin.overWriteSnapshots>false</dependency-plugin.overWriteSnapshots>
         <dependency-plugin.overWriteIfNewer>true</dependency-plugin.overWriteIfNewer>
-
-        <!-- Spring -->
-        <spring.spring-boot-admin-starter-client.version>2.6.2</spring.spring-boot-admin-starter-client.version>
     </properties>
 
     <build>
@@ -77,29 +74,10 @@
 
     <dependencies>
         <!-- Spring -->
-        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-thymeleaf -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/de.codecentric/spring-boot-admin-starter-client -->
-        <dependency>
-            <groupId>de.codecentric</groupId>
-            <artifactId>spring-boot-admin-starter-client</artifactId>
-            <version>${spring.spring-boot-admin-starter-client.version}</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-config -->
+        <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-config-server -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-config</artifactId>
+            <artifactId>spring-cloud-config-server</artifactId>
         </dependency>
     </dependencies>
 </project>
