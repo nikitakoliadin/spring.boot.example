@@ -29,6 +29,16 @@
       "name": "hazelcast.jmx.config",
       "type": "java.lang.String",
       "description": "Enable Hazelcast JMX config."
+    },
+    {
+      "name": "reminder.period",
+      "type": "java.lang.Integer",
+      "description": "Reminder period in minutes."
+    },
+    {
+      "name": "check.reminder.inverval",
+      "type": "java.lang.Integer",
+      "description": "Check reminder inverval in seconds."
     }
   ]
 }
