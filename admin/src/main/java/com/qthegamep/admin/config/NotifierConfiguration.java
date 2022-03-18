@@ -7,6 +7,7 @@ import de.codecentric.boot.admin.server.notify.Notifier;
 import de.codecentric.boot.admin.server.notify.RemindingNotifier;
 import de.codecentric.boot.admin.server.notify.filter.FilteringNotifier;
 import org.springframework.beans.factory.ObjectProvider;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,6 +25,7 @@ public class NotifierConfiguration {
     private final InstanceRepository repository;
     private final ObjectProvider<List<Notifier>> otherNotifiers;
 
+    @Autowired
     public NotifierConfiguration(@Value("${reminder.period}") Integer reminderPeriod,
                                  @Value("${check.reminder.inverval}") Integer checkReminderInverval,
                                  InstanceRepository repository,

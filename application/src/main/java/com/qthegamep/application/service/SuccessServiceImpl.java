@@ -1,6 +1,7 @@
 package com.qthegamep.application.service;
 
 import com.qthegamep.application.dto.SuccessResponseDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ public class SuccessServiceImpl implements SuccessService {
 
     private final String springApplicationName;
 
+    @Autowired
     public SuccessServiceImpl(@Value("${spring.application.name}") String springApplicationName) {
         this.springApplicationName = springApplicationName;
     }

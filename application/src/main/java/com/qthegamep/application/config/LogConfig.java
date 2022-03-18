@@ -13,6 +13,7 @@ import ch.qos.logback.core.util.StatusPrinter;
 import com.qthegamep.application.Application;
 import com.qthegamep.application.util.Constants;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
@@ -33,6 +34,7 @@ public class LogConfig {
     private final String rootLoggerFileTotalSizeCap;
     private final String rootLoggerFilePattern;
 
+    @Autowired
     public LogConfig(@Value("${root.logger.level}") String rootLoggerLevel,
                      @Value("${root.logger.file.enable}") Boolean rootLoggerFileEnabled,
                      @Value("${root.logger.file.name}") String rootLoggerFileName,

@@ -3,6 +3,7 @@ package com.qthegamep.application.config;
 import com.qthegamep.application.exception.ApplicationConfigInitializationException;
 import com.qthegamep.application.util.Constants;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
@@ -26,6 +27,7 @@ public class ApplicationConfig {
 
     private final String dockerImageNameFilePath;
 
+    @Autowired
     public ApplicationConfig(@Value("${docker.image.name.file.path}") String dockerImageNameFilePath) {
         this.dockerImageNameFilePath = dockerImageNameFilePath;
     }

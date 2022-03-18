@@ -2,6 +2,7 @@ package com.qthegamep.admin.config;
 
 import com.hazelcast.config.*;
 import com.hazelcast.spi.merge.PutIfAbsentMergePolicy;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,6 +18,7 @@ public class HazelcastConfig {
     private final Integer sentNotificationsMapMergePolicyConfigBatchSize;
     private final String hazelcastJmxConfig;
 
+    @Autowired
     public HazelcastConfig(@Value("${event.store.map.backup.count}") Integer eventStoreMapBackupCount,
                            @Value("${event.store.map.merge.policy.config.batch.size}") Integer eventStoreMapMergePolicyConfigBatchSize,
                            @Value("${sent.notifications.map.backup.count}") Integer sentNotificationsMapBackupCount,
