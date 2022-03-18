@@ -1,8 +1,7 @@
 package com.qthegamep.application.filter;
 
 import com.qthegamep.application.util.Constants;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
@@ -11,11 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+@Slf4j
 @Component
 @Order(10)
 public class ResponseLogFilter implements Filter {
-
-    private static final Logger LOG = LoggerFactory.getLogger(ResponseLogFilter.class);
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
@@ -28,6 +26,6 @@ public class ResponseLogFilter implements Filter {
             String startTime = (String) servletRequest.getAttribute(Constants.START_TIME_HEADER);
             duration = String.valueOf(System.currentTimeMillis() - Long.parseLong(startTime));
         }
-        LOG.info("Request processed. Path: {} RequestId: {} Client IP: {} Duration: {}", path, requestId, clientIp, duration);
+        log.info("Request processed. Path: {} RequestId: {} Client IP: {} Duration: {}", path, requestId, clientIp, duration);
     }
 }

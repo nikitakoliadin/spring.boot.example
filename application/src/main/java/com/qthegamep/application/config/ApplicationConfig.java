@@ -2,8 +2,7 @@ package com.qthegamep.application.config;
 
 import com.qthegamep.application.exception.ApplicationConfigInitializationException;
 import com.qthegamep.application.util.Constants;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
@@ -21,10 +20,9 @@ import java.util.Enumeration;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Configuration
 public class ApplicationConfig {
-
-    private static final Logger LOG = LoggerFactory.getLogger(ApplicationConfig.class);
 
     private final String dockerImageNameFilePath;
 
@@ -46,10 +44,10 @@ public class ApplicationConfig {
         Optional<String> serverIpOptional = getServerIp();
         if (serverIpOptional.isPresent()) {
             String serverIp = serverIpOptional.get();
-            LOG.info("Server IP: {}", serverIp);
+            log.info("Server IP: {}", serverIp);
             System.setProperty(Constants.SERVER_IP_PROPERTY, serverIp);
         } else {
-            LOG.warn("Server IP is not defined!");
+            log.warn("Server IP is not defined!");
         }
     }
 
@@ -57,7 +55,7 @@ public class ApplicationConfig {
         Enumeration<NetworkInterface> networkInterfaces = NetworkInterface.getNetworkInterfaces();
         while (networkInterfaces.hasMoreElements()) {
             NetworkInterface networkInterface = networkInterfaces.nextElement();
-            LOG.debug("Interface display name: {}", networkInterface.getDisplayName());
+            log.debug("Interface display name: {}", networkInterface.getDisplayName());
             if (networkInterface.isLoopback()
                     || !networkInterface.isUp()
                     || networkInterface.isVirtual()
@@ -69,7 +67,7 @@ public class ApplicationConfig {
             while (inetAddresses.hasMoreElements()) {
                 InetAddress inetAddress = inetAddresses.nextElement();
                 String hostAddress = inetAddress.getHostAddress();
-                LOG.debug("Interface display name: {} host address: {}", networkInterface.getDisplayName(), hostAddress);
+                log.debug("Interface display name: {} host address: {}", networkInterface.getDisplayName(), hostAddress);
                 if (Inet4Address.class == inetAddress.getClass()) {
                     return Optional.of(hostAddress);
                 }
@@ -83,14 +81,14 @@ public class ApplicationConfig {
         if (dockerImageNameFile.exists() && !dockerImageNameFile.isDirectory()) {
             List<String> lines = Files.readAllLines(Paths.get(dockerImageNameFilePath), StandardCharsets.UTF_8);
             if (lines.isEmpty()) {
-                LOG.warn("Docker image name file: {} is empty!", dockerImageNameFilePath);
+                log.warn("Docker image name file: {} is empty!", dockerImageNameFilePath);
             } else {
                 String dockerImageName = lines.get(0);
-                LOG.info("Docker image name: {}", dockerImageName);
+                log.info("Docker image name: {}", dockerImageName);
                 System.setProperty(Constants.DOCKER_IMAGE_NAME_PROPERTY, dockerImageName);
             }
         } else {
-            LOG.warn("Docker image name file: {} not exists!", dockerImageNameFilePath);
+            log.warn("Docker image name file: {} not exists!", dockerImageNameFilePath);
         }
     }
 }

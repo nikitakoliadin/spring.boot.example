@@ -1,5 +1,8 @@
 package com.qthegamep.application.util;
 
+import lombok.experimental.UtilityClass;
+
+@UtilityClass
 public class Constants {
 
     public static final String SERVER_IP_PROPERTY = "serverIp";

@@ -1,15 +1,13 @@
 package com.qthegamep.application.service;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
 
+@Slf4j
 @Service
 public class GenerationServiceImpl implements GenerationService {
-
-    private static final Logger LOG = LoggerFactory.getLogger(GenerationServiceImpl.class);
 
     @Override
     public String generateUniqueId(Long length) {
@@ -23,7 +21,7 @@ public class GenerationServiceImpl implements GenerationService {
             }
             uniqueId.append(symbol);
         }
-        LOG.debug("Generated unique ID: {}", uniqueId);
+        log.debug("Generated unique ID: {}", uniqueId);
         return uniqueId.toString();
     }
 }

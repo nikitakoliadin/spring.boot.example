@@ -1,8 +1,7 @@
 package com.qthegamep.application.filter;
 
 import com.qthegamep.application.util.Constants;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
@@ -14,10 +13,9 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 import javax.servlet.ServletRequest;
 
+@Slf4j
 @ControllerAdvice
 public class DurationResponseFilter implements ResponseBodyAdvice<Object> {
-
-    private static final Logger LOG = LoggerFactory.getLogger(DurationResponseFilter.class);
 
     private final ServletRequest servletRequest;
 
@@ -41,7 +39,7 @@ public class DurationResponseFilter implements ResponseBodyAdvice<Object> {
         String requestId = (String) servletRequest.getAttribute(Constants.REQUEST_ID_HEADER);
         String startTime = (String) servletRequest.getAttribute(Constants.START_TIME_HEADER);
         String duration = String.valueOf(System.currentTimeMillis() - Long.parseLong(startTime));
-        LOG.debug("Duration: {} RequestId: {}", duration, requestId);
+        log.debug("Duration: {} RequestId: {}", duration, requestId);
         response.getHeaders().add(Constants.DURATION_HEADER, duration);
         return body;
     }

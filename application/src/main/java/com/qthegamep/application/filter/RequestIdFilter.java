@@ -2,8 +2,7 @@ package com.qthegamep.application.filter;
 
 import com.qthegamep.application.service.GenerationService;
 import com.qthegamep.application.util.Constants;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -13,11 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+@Slf4j
 @Component
 @Order(20)
 public class RequestIdFilter implements Filter {
-
-    private static final Logger LOG = LoggerFactory.getLogger(RequestIdFilter.class);
 
     private final GenerationService generationService;
 
@@ -29,7 +27,7 @@ public class RequestIdFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         String requestId = getRequestId(servletRequest);
-        LOG.debug("RequestId: {}", requestId);
+        log.debug("RequestId: {}", requestId);
         servletRequest.setAttribute(Constants.REQUEST_ID_HEADER, requestId);
         ((HttpServletResponse) servletResponse).addHeader(Constants.REQUEST_ID_HEADER, requestId);
         filterChain.doFilter(servletRequest, servletResponse);

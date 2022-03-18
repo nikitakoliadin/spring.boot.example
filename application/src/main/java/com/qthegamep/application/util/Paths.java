@@ -1,5 +1,8 @@
 package com.qthegamep.application.util;
 
+import lombok.experimental.UtilityClass;
+
+@UtilityClass
 public class Paths {
 
     public static final String SUCCESS_PATH = "/success";
