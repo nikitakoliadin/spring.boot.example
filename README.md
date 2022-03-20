@@ -14,7 +14,7 @@ Run jar: `java -jar .\[module_name]-[version].jar`
 
 ### application
 
-[http://localhost:8081](http://localhost:8081)
+[https://localhost:8081](https://localhost:8081)
 
 ### config
 
