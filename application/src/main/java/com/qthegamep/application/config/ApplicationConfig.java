@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Slf4j
-@Configuration
+@Configuration("ApplicationConfig")
 public class ApplicationConfig {
 
     private final String dockerImageNameFilePath;

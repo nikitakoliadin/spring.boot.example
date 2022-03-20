@@ -13,10 +13,16 @@ import java.util.Date;
 public class SuccessServiceImpl implements SuccessService {
 
     private final String springApplicationName;
+    private final String serverIp;
+    private final String dockerImageName;
 
     @Autowired
-    public SuccessServiceImpl(@Value("${spring.application.name}") String springApplicationName) {
+    public SuccessServiceImpl(@Value("${spring.application.name}") String springApplicationName,
+                              @Value("${server.ip}") String serverIp,
+                              @Value("${docker.image.name}") String dockerImageName) {
         this.springApplicationName = springApplicationName;
+        this.serverIp = serverIp;
+        this.dockerImageName = dockerImageName;
     }
 
     @Override
@@ -25,6 +31,8 @@ public class SuccessServiceImpl implements SuccessService {
         successResponseDTO.setNow(new Date());
         successResponseDTO.setRequestId(requestId);
         successResponseDTO.setApplicationName(springApplicationName);
+        successResponseDTO.setServerIp(serverIp);
+        successResponseDTO.setDockerImageName(dockerImageName);
         return successResponseDTO;
     }
 }

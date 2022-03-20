@@ -59,6 +59,16 @@
       "name": "root.logger.file.pattern",
       "type": "java.lang.String",
       "description": "Pattern of the root logger file."
+    },
+    {
+      "name": "server.ip",
+      "type": "java.lang.String",
+      "description": "Server IP."
+    },
+    {
+      "name": "docker.image.name",
+      "type": "java.lang.String",
+      "description": "Docker image name."
     }
   ]
 }

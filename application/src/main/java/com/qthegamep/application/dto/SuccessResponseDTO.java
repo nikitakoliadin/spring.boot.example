@@ -26,4 +26,14 @@ public class SuccessResponseDTO {
             value = "applicationName",
             required = true)
     private String applicationName;
+
+    @JsonProperty(
+            value = "serverIp",
+            required = true)
+    private String serverIp;
+
+    @JsonProperty(
+            value = "dockerImageName",
+            required = true)
+    private String dockerImageName;
 }

@@ -5,7 +5,7 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class Constants {
 
-    public static final String SERVER_IP_PROPERTY = "serverIp";
+    public static final String SERVER_IP_PROPERTY = "server.ip";
     public static final String DOCKER_IMAGE_NAME_PROPERTY = "docker.image.name";
     public static final String LOGGER_REPLACE_PATTERN = "\\{}";
     public static final String MONGO_UTC_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";

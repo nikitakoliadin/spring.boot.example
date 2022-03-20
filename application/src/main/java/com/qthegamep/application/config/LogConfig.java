@@ -16,11 +16,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
 
 import javax.annotation.PostConstruct;
 import java.nio.charset.StandardCharsets;
 
 @Configuration
+@DependsOn("ApplicationConfig")
 public class LogConfig {
 
     private final String rootLoggerLevel;
@@ -33,6 +35,7 @@ public class LogConfig {
     private final String rootLoggerFileMaxHistory;
     private final String rootLoggerFileTotalSizeCap;
     private final String rootLoggerFilePattern;
+    private final String dockerImageName;
 
     @Autowired
     public LogConfig(@Value("${root.logger.level}") String rootLoggerLevel,
@@ -44,7 +47,8 @@ public class LogConfig {
                      @Value("${root.logger.file.max.file.size}") String rootLoggerFileMaxFileSize,
                      @Value("${root.logger.file.max.history}") String rootLoggerFileMaxHistory,
                      @Value("${root.logger.file.total.size.cap}") String rootLoggerFileTotalSizeCap,
-                     @Value("${root.logger.file.pattern}") String rootLoggerFilePattern) {
+                     @Value("${root.logger.file.pattern}") String rootLoggerFilePattern,
+                     @Value("${docker.image.name}") String dockerImageName) {
         this.rootLoggerLevel = rootLoggerLevel;
         this.rootLoggerFileEnabled = rootLoggerFileEnabled;
         this.rootLoggerFileName = rootLoggerFileName;
@@ -55,6 +59,7 @@ public class LogConfig {
         this.rootLoggerFileMaxHistory = rootLoggerFileMaxHistory;
         this.rootLoggerFileTotalSizeCap = rootLoggerFileTotalSizeCap;
         this.rootLoggerFilePattern = rootLoggerFilePattern;
+        this.dockerImageName = dockerImageName;
     }
 
     @PostConstruct
@@ -65,7 +70,6 @@ public class LogConfig {
     private void configureRootLogger() {
         Logger logger = (Logger) LoggerFactory.getLogger(Application.class.getPackage().getName());
         logger.setLevel(Level.toLevel(rootLoggerLevel));
-        String dockerImageName = System.getProperty(Constants.DOCKER_IMAGE_NAME_PROPERTY);
         if (rootLoggerFileEnabled && dockerImageName != null && !dockerImageName.isEmpty()) {
             LoggerContext loggerContext = (LoggerContext) LoggerFactory.getILoggerFactory();
             logger.addAppender(buildRollingFileAppender(loggerContext, dockerImageName));
