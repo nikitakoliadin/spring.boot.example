@@ -32,6 +32,7 @@ public class CustomExceptionHandler {
         String requestId = (String) httpServletRequest.getAttribute(Constants.REQUEST_ID_HEADER);
         ErrorType errorType = getErrorType(exception);
         Error error = new Error();
+        error.setRequestId(requestId);
         error.setErrorCode(errorType.getErrorCode());
         errorMongoRepository.save(error)
                 .subscribe(result -> log.info("Error has been saved {} RequestId: {}", result, requestId));

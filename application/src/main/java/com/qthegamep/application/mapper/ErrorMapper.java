@@ -13,6 +13,7 @@ public interface ErrorMapper {
     ErrorMapper INSTANCE = Mappers.getMapper(ErrorMapper.class);
 
     @Mappings({
+            @Mapping(source = "requestId", target = "requestId"),
             @Mapping(source = "errorCode", target = "errorCode")
     })
     ErrorResponseDTO errorToErrorResponseDTO(Error error);

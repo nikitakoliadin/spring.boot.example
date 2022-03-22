@@ -18,6 +18,10 @@ public class Error {
     @Id
     private String id;
 
+    @Field(name = "requestId")
+    @Indexed(direction = IndexDirection.ASCENDING)
+    private String requestId;
+
     @Field(name = "errorCode")
     @Indexed(direction = IndexDirection.ASCENDING)
     private Integer errorCode;

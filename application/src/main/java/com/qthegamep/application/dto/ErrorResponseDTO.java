@@ -11,6 +11,11 @@ import lombok.NoArgsConstructor;
 public class ErrorResponseDTO {
 
     @JsonProperty(
+            value = "requestId",
+            required = true)
+    private String requestId;
+
+    @JsonProperty(
             value = "errorCode",
             required = true)
     private Integer errorCode;
