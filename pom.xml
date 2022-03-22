@@ -28,6 +28,7 @@
 
     <properties>
         <!-- Spring -->
+        <spring.version>2.6.4</spring.version>
         <spring.spring-cloud-dependencies.version>2021.0.1</spring.spring-cloud-dependencies.version>
     </properties>
 
