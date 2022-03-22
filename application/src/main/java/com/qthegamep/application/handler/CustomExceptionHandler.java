@@ -3,6 +3,7 @@ package com.qthegamep.application.handler;
 import com.qthegamep.application.dto.ErrorResponseDTO;
 import com.qthegamep.application.entity.Error;
 import com.qthegamep.application.exception.ServiceException;
+import com.qthegamep.application.mapper.ErrorMapper;
 import com.qthegamep.application.model.ErrorType;
 import com.qthegamep.application.repository.ErrorMongoRepository;
 import com.qthegamep.application.util.Constants;
@@ -34,8 +35,7 @@ public class CustomExceptionHandler {
         error.setErrorCode(errorType.getErrorCode());
         errorMongoRepository.save(error)
                 .subscribe(result -> log.info("Error has been saved {} RequestId: {}", result, requestId));
-        ErrorResponseDTO errorResponseDTO = new ErrorResponseDTO();
-        errorResponseDTO.setErrorCode(errorType.getErrorCode());
+        ErrorResponseDTO errorResponseDTO = ErrorMapper.INSTANCE.errorToErrorResponseDTO(error);
         log.error("Error. Error response DTO: {} RequestId: {} ", errorResponseDTO, requestId, exception);
         return new ResponseEntity<>(errorResponseDTO, HttpStatus.BAD_REQUEST);
     }
