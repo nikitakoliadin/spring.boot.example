@@ -26,6 +26,6 @@ public class ResponseLogFilter implements Filter {
             String startTime = (String) servletRequest.getAttribute(Constants.START_TIME_HEADER);
             duration = String.valueOf(System.currentTimeMillis() - Long.parseLong(startTime));
         }
-        log.info("Request processed. Path: {} RequestId: {} Client IP: {} Duration: {}", path, requestId, clientIp, duration);
+        log.info("Request processed. Path: {} Client IP: {} Duration: {} RequestId: {}", path, clientIp, duration, requestId);
     }
 }
