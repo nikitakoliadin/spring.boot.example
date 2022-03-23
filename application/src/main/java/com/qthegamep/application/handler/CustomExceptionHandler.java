@@ -6,6 +6,7 @@ import com.qthegamep.application.exception.ServiceException;
 import com.qthegamep.application.mapper.ErrorMapper;
 import com.qthegamep.application.model.ErrorType;
 import com.qthegamep.application.repository.ErrorMongoRepository;
+import com.qthegamep.application.repository.ErrorSQLRepository;
 import com.qthegamep.application.util.Constants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +22,13 @@ import javax.servlet.http.HttpServletRequest;
 public class CustomExceptionHandler {
 
     private final ErrorMongoRepository errorMongoRepository;
+    private final ErrorSQLRepository errorSQLRepository;
 
     @Autowired
-    public CustomExceptionHandler(ErrorMongoRepository errorMongoRepository) {
+    public CustomExceptionHandler(ErrorMongoRepository errorMongoRepository,
+                                  ErrorSQLRepository errorSQLRepository) {
         this.errorMongoRepository = errorMongoRepository;
+        this.errorSQLRepository = errorSQLRepository;
     }
 
     @ExceptionHandler(Exception.class)
@@ -35,7 +39,15 @@ public class CustomExceptionHandler {
         error.setRequestId(requestId);
         error.setErrorCode(errorType.getErrorCode());
         errorMongoRepository.save(error)
-                .subscribe(result -> log.info("Error has been saved {} RequestId: {}", result, requestId));
+                .subscribe(result -> {
+                    log.info("Error has been saved to MongoDB {} RequestId: {}", result, requestId);
+                    error.setId(null);
+                });
+        errorSQLRepository.save(error)
+                .subscribe(result -> {
+                    log.info("Error has been saved to MySQL {} RequestId: {}", result, requestId);
+                    error.setId(null);
+                });
         ErrorResponseDTO errorResponseDTO = ErrorMapper.INSTANCE.errorToErrorResponseDTO(error);
         log.error("Error. Error response DTO: {} RequestId: {} ", errorResponseDTO, requestId, exception);
         return new ResponseEntity<>(errorResponseDTO, HttpStatus.BAD_REQUEST);

@@ -4,10 +4,10 @@ DROP TABLE IF EXISTS `spring-boot-example`.`errors`;
 
 CREATE TABLE `spring-boot-example`.`errors`
 (
-    `ID`         INT          NOT NULL AUTO_INCREMENT,
-    `REQUEST_ID` VARCHAR(255) NOT NULL,
-    `ERROR_CODE` int          NOT NULL,
-    CONSTRAINT `ERRORS_PRIMARY_KEY` PRIMARY KEY (`ID`)
+    `id`        INT          NOT NULL AUTO_INCREMENT,
+    `requestId` VARCHAR(255) NOT NULL,
+    `errorCode` int          NOT NULL,
+    CONSTRAINT `ERRORS_PRIMARY_KEY` PRIMARY KEY (`id`)
 )
     ENGINE = InnoDB
     AUTO_INCREMENT = 1
