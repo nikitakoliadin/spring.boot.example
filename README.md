@@ -52,4 +52,5 @@ Run jar: `java -jar .\[module_name]-[version].jar`
 * /success
 * /success-async
 * /failure
+* /failure-async
 * /error
