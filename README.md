@@ -50,5 +50,6 @@ Run jar: `java -jar .\[module_name]-[version].jar`
 ### Service Urls
 
 * /success
+* /success-async
 * /failure
 * /error

@@ -3,7 +3,7 @@
     {
       "name": "system.type",
       "type": "java.lang.String",
-      "description": "Type of configs."
+      "description": "Type of properties."
     },
     {
       "name": "docker.image.name.file.path",
@@ -69,6 +69,26 @@
       "name": "docker.image.name",
       "type": "java.lang.String",
       "description": "Docker image name."
+    },
+    {
+      "name": "async.core.pool.size",
+      "type": "java.lang.Integer",
+      "description": "Async core pool size."
+    },
+    {
+      "name": "async.max.pool.size",
+      "type": "java.lang.Integer",
+      "description": "Async maximum pool size."
+    },
+    {
+      "name": "async.queue.capacity",
+      "type": "java.lang.Integer",
+      "description": "Async queue capacity."
+    },
+    {
+      "name": "async.thread.name.prefix",
+      "type": "java.lang.String",
+      "description": "Async thread name prefix."
     }
   ]
 }
